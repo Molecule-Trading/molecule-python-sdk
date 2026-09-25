@@ -2,6 +2,10 @@
 
 Official Python SDK for the Molecule prediction-market execution API.
 
+Source: https://github.com/Molecule-Trading/molecule-python-sdk
+Docs: https://molelcule.mintlify.site/
+Site: https://molecule-neon.vercel.app
+
 ```bash
 pip install molecule
 ```
@@ -29,7 +33,7 @@ from molecule import Molecule
 client = Molecule(
     base_url=os.environ["MOLECULE_BASE_URL"],
     key_id=os.environ["MOLECULE_KEY_ID"],
-    private_key=os.environ["MOLECULE_PRIVATE_KEY"],  # stays in this process
+    private_key=os.environ["MOLECULE_PRIVATE_KEY"],
 )
 
 found = client.search_markets(q="house", venue="Demo")
@@ -50,18 +54,20 @@ order = client.create_order(
 print(order["id"], order["status"])
 ```
 
-Live venues: Demo, Polymarket, Kalshi.
+Live venues: Demo, Polymarket, Kalshi. Polymarket US and Crypto.com are unreleased.
+
+`search_markets` and `create_order` are flat aliases of `markets.search` and `orders.create`. `iter_ws` is a synchronous iterator. Complex orders use `kind` (`ICEBERG`, `PEG`, `STOP`, `TP_SL`, `SMART_ROUTE`).
 
 ## Environment
 
 | Variable | Purpose |
 | --- | --- |
 | `MOLECULE_BASE_URL` | API base if `base_url` is omitted |
-| `MOLECULE_KEY_ID` | Trading key id (example only; pass explicitly if you prefer) |
-| `MOLECULE_PRIVATE_KEY` | Base64 32-byte Ed25519 seed |
+| `MOLECULE_KEY_ID` | Trading key id. Pass it to the constructor. The client does not read this on its own. |
+| `MOLECULE_PRIVATE_KEY` | Base64 32-byte Ed25519 seed. Pass it to the constructor. The client does not read this on its own. |
 
 `base_url` is required at init via the constructor or `MOLECULE_BASE_URL`.
 
 ## Docs
 
-Product docs: `/docs` on the product site.
+https://molelcule.mintlify.site/
