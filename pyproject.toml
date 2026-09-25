@@ -35,7 +35,7 @@ dev = [
 ]
 
 [project.urls]
-Documentation = "https://molecule.example/docs"
+Documentation = "https://molelcule.mintlify.site/"
 Homepage = "https://github.com/Molecule-Trading/molecule-python-sdk"
 
 [tool.setuptools.packages.find]
